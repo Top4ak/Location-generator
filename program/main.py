@@ -1,9 +1,8 @@
 from random import randint
 from turtle import *
 from math import *
-import time
-from turtle import _Screen
 from classes import *
+from algo import *
 
 
 
@@ -19,15 +18,25 @@ def proga():
    pencolor(255, 255, 255)
    pensize(10)
 
-   goto(-700, 0)
-
    a = []
-   i = -700
-   while(i < 550):
-      a.append(xy(i, randint(-300, 300)))
-      i += randint(100, 200)
-   a.append(xy(700, randint(-300, 300)))
+   x = -700
+   while(x < 550):
+      tmp = randint(-300, 300)
+      a.append(xy(x - 100, tmp))
+      a.append(xy(x, tmp))
+      a.append(xy(x + 100, tmp))
+      x += randint(200, 400)
    
+   tmp = randint(-300, 300)
+   a.append(xy(600, tmp))
+   a.append(xy(700, tmp))
+
+   pu()
+   goto(a[1].x, a[1].y)
+   pd()
+
+   for i in range(1, len(a) - 2, 3):
+      DrawBezier(a[i], a[i + 1], a[i + 2], a[i + 3])
 
 
 
