@@ -16,28 +16,30 @@ bgcolor("black")
 def proga():
    colormode(255)
    pencolor(255, 255, 255)
-   pensize(10)
 
-   a = []
-   x = -700
-   while(x < 550):
+   while(True):
+      reset()
+      pensize(15)
+      ht()
+      a = []
+      x = -700
+      while(x < 550):
+         tmp = randint(-300, 300)
+         a.append(xy(x - 100, tmp))
+         a.append(xy(x, tmp))
+         a.append(xy(x + 100, tmp))
+         x += randint(150, 300)
+      
       tmp = randint(-300, 300)
-      a.append(xy(x - 100, tmp))
-      a.append(xy(x, tmp))
-      a.append(xy(x + 100, tmp))
-      x += randint(200, 400)
-   
-   tmp = randint(-300, 300)
-   a.append(xy(600, tmp))
-   a.append(xy(700, tmp))
+      a.append(xy(600, tmp))
+      a.append(xy(700, tmp))
 
-   pu()
-   goto(a[1].x, a[1].y)
-   pd()
+      pu()
+      goto(a[1].x, a[1].y)
+      pd()
 
-   for i in range(1, len(a) - 2, 3):
-      DrawBezier(a[i], a[i + 1], a[i + 2], a[i + 3])
-
+      for i in range(1, len(a) - 2, 3):
+         DrawBezier(a[i], a[i + 1], a[i + 2], a[i + 3])
 
 
    #col = Gradient(0, 255, 0, 105, 105, 105)
